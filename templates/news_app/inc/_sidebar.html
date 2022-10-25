@@ -1,0 +1,13 @@
+<div class="col-md-2 row g-4">
+    <div class="mt">
+        <ul class="list-group sidebar-sticky-top sticky-top">
+            {% for item in categories|dictsort:'title' %}
+                <a href="{{ item.get_absolute_url }}"
+                   class="sidebar-item list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                    <span class="sidebar-item-title">{{ item.title }}</span>
+                    <span class="badge bg-primary">{{ item.cnt }}</span>
+                </a>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

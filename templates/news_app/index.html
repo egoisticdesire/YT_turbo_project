@@ -1,0 +1,50 @@
+{% extends 'news_app/base.html' %}
+
+{% block title %}
+    {{ title }} :: {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <div class="main-content col-md-10 row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+        {% for item in news %}
+
+            <div class="col">
+                <div class="custom-card card">
+
+                    <a href="{{ item.get_absolute_url }}" class="text-decoration-none">
+                        {% if item.photo %}
+                            <img src="{{ item.photo.url }}" alt="" class="card-img-top">
+                        {% else %}
+                            <img src="https://img.freepik.com/free-vector/tiny-characters-sitting-laptop-with-lorem-ipsum-title_74855-20389.jpg?w=1480&t=st=1665865814~exp=1665866414~hmac=0dfaf49fe1350925106e58bf01a6d184411e0f59751204fabe0edcd6c2ffda63"
+                                 alt="" class="card-img-top">
+                        {% endif %}
+                    </a>
+
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{ item.title }}</h5>
+                        <p class="card-text">
+                            {{ item.content|linebreaksbr|truncatewords:'50' }}
+                        </p>
+
+                        <a href="{{ item.get_absolute_url }}"
+                           class="news-link btn btn-outline-primary btn-sm mt-auto p-2">
+                            Read more...
+                        </a>
+                    </div>
+
+                    <div class="card-footer">
+                        <small class="float-start">
+                            <a href="{{ item.category.get_absolute_url }}"
+                               class="category-link text-decoration-none">
+                                {{ item.category }}
+                            </a>
+                        </small>
+                        <small class="text-muted float-end">{{ item.created_at|date:'Y-m-d | H:i' }}</small>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+{% endblock %}

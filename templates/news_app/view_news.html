@@ -1,0 +1,41 @@
+{% extends 'news_app/base.html' %}
+
+{% block title %}
+    {{ news_item.title }} :: {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="col-md-10 row g-4">
+        <h1 class="text-center fw-light">{{ news_item.title }}</h1>
+
+        <div class="col">
+            <div class="single-card card">
+
+                {% if news_item.photo %}
+                    <img src="{{ news_item.photo.url }}" alt="" class="card-img-top">
+                {% else %}
+                    <img src="https://img.freepik.com/free-vector/tiny-characters-sitting-laptop-with-lorem-ipsum-title_74855-20389.jpg?w=1480&t=st=1665865814~exp=1665866414~hmac=0dfaf49fe1350925106e58bf01a6d184411e0f59751204fabe0edcd6c2ffda63"
+                         alt="" class="card-img-top">
+                {% endif %}
+
+                <div class="card-body">
+
+                    <p class="card-text">
+                        {{ news_item.content|linebreaksbr }}
+                    </p>
+                </div>
+
+                <div class="card-footer">
+                    <small class="float-start">
+                        <a href="{{ news_item.category.get_absolute_url }}"
+                           class="category-link text-decoration-none">
+                            {{ news_item.category }}
+                        </a>
+                    </small>
+                    <small class="text-muted float-end">{{ news_item.created_at|date:'Y-m-d | H:i' }}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

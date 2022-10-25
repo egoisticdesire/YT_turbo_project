@@ -1,0 +1,27 @@
+{% extends 'news_app/base.html' %}
+
+{% block title %}
+    Обратная связь :: {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <div class="col-md-6 offset-md-2 row g-4">
+
+        {% block messages %}
+            {% include 'news_app/inc/_messages.html' %}
+        {% endblock %}
+
+        <h1 class="text-center fw-light">Напишите нам</h1>
+        <div class="card form-card">
+            <form method="post">
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <button type="submit" class="custom-btn btn w-100 btn-outline-light mt-5">
+                    Отправить
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
