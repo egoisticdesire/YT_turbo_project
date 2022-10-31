@@ -1,11 +1,9 @@
-import re
 from django import forms
-from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from captcha.fields import CaptchaField, CaptchaTextInput
 
-from news_app.models import Category, News
+from news_app.models import News
 
 
 class ContactForm(forms.Form):

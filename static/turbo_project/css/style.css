@@ -60,7 +60,7 @@ body {
 
 header {
     min-height: 5em !important;
-    background-color: rgba(0, 0, 0, .8) !important;
+    background-color: rgba(0, 0, 0, .7) !important;
     -webkit-backdrop-filter: blur(5px) !important;
     backdrop-filter: blur(5px) !important;
 }
@@ -121,6 +121,9 @@ footer {
     margin-top: 6.5em !important;
 }
 
+.col-md-2 {
+    min-width: 12em !important;
+}
 
 .sidebar-sticky-top {
     z-index: 5 !important;
